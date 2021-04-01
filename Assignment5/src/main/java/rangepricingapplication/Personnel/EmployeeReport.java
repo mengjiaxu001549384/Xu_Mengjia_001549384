@@ -25,7 +25,7 @@ public class EmployeeReport {
 
     
     public void addEmployeeSummary(EmployeeSummary es){
-    employeeSummaryList.add(es);
+        employeeSummaryList.add(es);
     }
     
     public List<EmployeeSummary> getTopTenSalesPersonBySalesVolume(){

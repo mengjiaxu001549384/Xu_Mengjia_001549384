@@ -26,6 +26,7 @@ public class Order {
         orderitems = new ArrayList();
         customer = cp;
         salesperson = saleperson;
+        salesperson.addOrder(this);
     }
 
     public ArrayList<OrderItem> getOrderitems() {

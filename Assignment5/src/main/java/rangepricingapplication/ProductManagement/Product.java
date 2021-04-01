@@ -28,10 +28,15 @@ public class Product {
         targetPrice = tp;
         supplier = s;
         orderitems = new ArrayList();
+        supplier.addProduct(this);
     }
 
     public String getName() {
         return name;
+    }
+    
+    public void addSupplier(){
+        
     }
 
     public Supplier getSupplier(){

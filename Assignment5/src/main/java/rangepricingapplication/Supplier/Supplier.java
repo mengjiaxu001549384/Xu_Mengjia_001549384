@@ -5,9 +5,12 @@
  */
 package rangepricingapplication.Supplier;
 
+import java.util.ArrayList;
+import java.util.List;
 import rangepricingapplication.OrderManagement.MasterOrderList;
 import rangepricingapplication.OrderManagement.Order;
 import rangepricingapplication.OrderManagement.OrderItem;
+import rangepricingapplication.ProductManagement.Product;
 import rangepricingapplication.ProductManagement.ProductCatalog;
 
 /**
@@ -16,26 +19,22 @@ import rangepricingapplication.ProductManagement.ProductCatalog;
  */
 public class Supplier {
     String name;
-    ProductCatalog productcatalog;
-    MasterOrderList masterOrderList;
+    List<Product> productlist;
     
     public Supplier(String n){
         name = n;
-        productcatalog = new ProductCatalog();
-        masterOrderList = new MasterOrderList();
+        productlist = new ArrayList<>();
     }
 
-    public void setMasterOrderList(MasterOrderList masterOrderList) {
-        this.masterOrderList = masterOrderList;
+    public void addProduct(Product product){
+        productlist.add(product);
     }
     
     public int getSalesVolume(){
         int sum = 0;
-        for(Order o : masterOrderList.getOrders()){
-            for(OrderItem oi: o.getOrderitems()){
-                if(oi.getSupplier() == this){
-                    sum += oi.getOrderItemTotal();
-                }
+        for(Product p: productlist){
+            for(OrderItem oi: p.getOrderitems()){
+                sum += oi.getOrderItemTotal();
             }
         }
         return sum;

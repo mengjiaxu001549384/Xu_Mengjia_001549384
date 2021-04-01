@@ -27,6 +27,7 @@ public class ProductCatalog {
     public Product newProduct(String name, int fp, int cp, int tp,Supplier supplier){
         Product p = new Product(name, fp, cp, tp, supplier);
         products.add(p);
+        
         return p;
     }
     public ProductsReport generatPerformanceReport(){

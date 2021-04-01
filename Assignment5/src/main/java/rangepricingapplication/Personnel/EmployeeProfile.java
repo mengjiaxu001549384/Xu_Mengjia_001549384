@@ -6,7 +6,8 @@
 package rangepricingapplication.Personnel;
 
 
-import rangepricingapplication.OrderManagement.MasterOrderList;
+import java.util.ArrayList;
+import java.util.List;
 import rangepricingapplication.OrderManagement.Order;
 import rangepricingapplication.OrderManagement.OrderItem;
 
@@ -18,7 +19,7 @@ public class EmployeeProfile {
 
     Person person;
     Order order;
-    MasterOrderList masterOrderList;
+    List<Order> orderList;
 
     public EmployeeProfile() {
     }
@@ -27,21 +28,20 @@ public class EmployeeProfile {
 
     public EmployeeProfile(Person p) {
         person = p;
-        masterOrderList = new MasterOrderList();
+        orderList = new ArrayList<>();
     }
 
-    public void setMasterOrderList(MasterOrderList masterOrderList) {
-        this.masterOrderList = masterOrderList;
-    }
+   
     
+    public void addOrder(Order order){
+        orderList.add(order);
+    }
     
     public int getSalesVolume(){
         int sum = 0;
-        for(Order o : masterOrderList.getOrders()){
-            if(this == o.getSalesperson()){
-                for(OrderItem oi: o.getOrderitems()){
+        for(Order o : orderList){
+            for(OrderItem oi: o.getOrderitems()){
                     sum += oi.getOrderItemTotal();
-                }
             }
         }
         return sum;
@@ -53,11 +53,9 @@ public class EmployeeProfile {
 
     public int getPricePerformance(){
         int sum = 0;
-        for(Order o : masterOrderList.getOrders()){
-            if(this == o.getSalesperson()){
-                for(OrderItem oi: o.getOrderitems()){
-                    sum += oi.calculatePricePerformance();
-                }
+        for(Order o : orderList){
+            for(OrderItem oi: o.getOrderitems()){
+                sum += oi.calculatePricePerformance();
             }
         }
         return sum;

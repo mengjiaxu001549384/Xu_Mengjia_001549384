@@ -59,7 +59,7 @@ public class RangePricingApplication {
         
         for(int i = 0 ; i < 30; i++){
             Supplier supplier = supplierDirectory.newSupplier(faker.company().name());
-            supplier.setMasterOrderList(masterOrderList);
+            
             for(int j = 0 ; j < 4; j++){
                 int floor = faker.number().numberBetween(100, 1000);
                 productCatalog.newProduct(faker.commerce().productName(),floor, floor+100, floor+50, supplier);
@@ -72,7 +72,7 @@ public class RangePricingApplication {
         for(int i = 0 ; i < 15; i++){
             EmployeeProfile salesPerson = employeeDirectory.newEmployeeProfile(personDirectory.newPerson(faker.idNumber().ssnValid()));
             CustomerProfile customer = customerDirectory.newCustomerProfile(personDirectory.newPerson(faker.idNumber().ssnValid()));
-            salesPerson.setMasterOrderList(masterOrderList);
+            
             for(int j = 0 ; j < 8; j++){
                 Order o = masterOrderList.newOrder(customer, salesPerson);
                 int quantityOne = faker.number().numberBetween(1, 15);
@@ -101,7 +101,7 @@ public class RangePricingApplication {
         List<ProductSummary> topTenProductsBySalesVolume = pr.getTopTenProductsBySalesVolume();
         int numOne = 1;
         for(ProductSummary ps: topTenProductsBySalesVolume){
-            System.out.println(numOne +". "+ps.getName()+", which has sales volume of $"+ps.getSalesVolume());
+            System.out.println(numOne +". Product name is "+ps.getName()+", which has sales volume of $"+ps.getSalesVolume());
             numOne++;
         }
         
@@ -112,7 +112,7 @@ public class RangePricingApplication {
         List<ProductSummary> topTenProductsByPricepPerformance = pr.getTopTenProductsByPricepPerformance();
         int numTwo = 1;
         for(ProductSummary ps: topTenProductsByPricepPerformance){
-            System.out.println(numTwo +". "+ps.getName()+", which has a price performance of $"+ps.getSalesperformance());
+            System.out.println(numTwo +". Product name is "+ps.getName()+", which has a price performance of $"+ps.getSalesperformance());
             numTwo++;
         }
         

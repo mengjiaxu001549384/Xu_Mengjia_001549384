@@ -26,9 +26,7 @@ public class EmployeeSummary {
         
     }
     
-    public void setMasterOrderList(MasterOrderList masterOrderList) {
-        this.subjectEmployeeProfile.setMasterOrderList(masterOrderList);
-    }
+    
 
     
     public int getSalesVolume() {
